@@ -1,5 +1,35 @@
-import styles from './Modal.module.css';
+import styled from 'styled-components';
 import Modal from './modal/Modal';
+
+const RestaurantInfo = styled.div`
+  margin-bottom: 24px;
+`;
+
+const RestaurantDescription = styled.p`
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+`;
+
+const CloseButtonContainer = styled.div`
+  display: flex;
+`;
+
+const CloseButton = styled.button`
+  width: 100%;
+  height: 44px;
+  margin-right: 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--primary-color);
+  color: var(--grey-100);
+
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+`;
 
 const RestaurantDetailModal = ({
   onCloseRestaurantDetailModal,
@@ -16,20 +46,16 @@ const RestaurantDetailModal = ({
       title={selectedRestaurant.name}
       onClose={handleRestaurantDetailModalClose}
     >
-      <div className={styles['restaurant-info']}>
-        <p className={`${styles['restaurant-info__description']} text-body`}>
+      <RestaurantInfo>
+        <RestaurantDescription>
           {selectedRestaurant.description}
-        </p>
-      </div>
-      <div className={styles['button-container']}>
-        <button
-          type="button"
-          className={`${styles.button} ${styles['button--primary']} text-caption`}
-          onClick={handleRestaurantDetailModalClose}
-        >
+        </RestaurantDescription>
+      </RestaurantInfo>
+      <CloseButtonContainer>
+        <CloseButton type="button" onClick={handleRestaurantDetailModalClose}>
           닫기
-        </button>
-      </div>
+        </CloseButton>
+      </CloseButtonContainer>
     </Modal>
   );
 };
