@@ -15,11 +15,15 @@ const Label = styled.label`
   color: var(--grey-400);
   font-size: 14px;
 
-  &::after {
-    padding-left: 4px;
-    color: var(--primary-color);
-    content: '*';
-  }
+  ${(props) =>
+    props.$required &&
+    `
+    &::after {
+      padding-left: 4px;
+      color: var(--primary-color);
+      content: '*';
+    }
+  `}
 `;
 
 const CategorySelect = styled.select`
@@ -96,7 +100,7 @@ const AddRestaurantModal = ({
     <Modal title="새로운 음식점" onClose={handleAddRestaurantModalClose}>
       <AddRestaurantForm onSubmit={handleFormSubmit}>
         <FormItem>
-          <Label htmlFor="category" required>
+          <Label htmlFor="category" $required>
             카테고리
           </Label>
           <CategorySelect name="category" id="category" required>
@@ -109,7 +113,7 @@ const AddRestaurantModal = ({
         </FormItem>
 
         <FormItem>
-          <Label htmlFor="name" required>
+          <Label htmlFor="name" $required>
             이름
           </Label>
           <RestaurantNameInput
@@ -123,12 +127,7 @@ const AddRestaurantModal = ({
 
         <FormItem>
           <Label htmlFor="description">설명</Label>
-          <DescriptionTextarea
-            name="description"
-            id="description"
-            rows="5"
-            required
-          />
+          <DescriptionTextarea name="description" id="description" rows="5" />
           <DescriptionHelpText>
             메뉴 등 추가 정보를 입력해 주세요.
           </DescriptionHelpText>
