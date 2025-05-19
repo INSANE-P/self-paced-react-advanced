@@ -1,19 +1,17 @@
 import addButton from '../../assets/add-button.png';
 import styled from 'styled-components';
 
-const TEXT_COLOR = '#fcfcfd';
-
 const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 64px;
   padding: 0 16px;
-  background-color: var(--primary-color);
+  background-color: ${({ theme }) => theme.colors.primary};
 `;
 
 const Title = styled.h1`
-  color: ${TEXT_COLOR};
+  color: ${({ theme }) => theme.colors.title};
   font-size: 20px;
   line-height: 24px;
   font-weight: 600;

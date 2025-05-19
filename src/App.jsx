@@ -6,6 +6,8 @@ import RestaurantList from './components/main/RestaurantList';
 import RestaurantDetailModal from './components/aside/RestaurantDetailModal';
 import AddRestaurantModal from './components/aside/AddRestaurantModal';
 import { getRestaurants } from './api/api';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './styles/theme';
 
 const App = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -35,35 +37,39 @@ const App = () => {
 
   return (
     <>
-      <Header setIsRestaurantAddModalOpen={setIsRestaurantAddModalOpen} />
-      <main>
-        <CategoryFilter
-          selectedCategory={selectedCategory}
-          onChangeCategory={setSelectedCategory}
-        />
-        <RestaurantList
-          restaurants={filteredRestaurants}
-          onOpenModal={() => setIsRestaurantDetailModalOpen(true)}
-          onSelectRestaurant={setSelectedRestaurant}
-        />
-      </main>
-      <aside>
-        {isRestaurantDetailModalOpen && selectedRestaurant !== null && (
-          <RestaurantDetailModal
-            onCloseRestaurantDetailModal={() =>
-              setIsRestaurantDetailModalOpen(false)
-            }
-            selectedRestaurant={selectedRestaurant}
-            onDeselectRestaurant={() => setSelectedRestaurant(null)}
+      <ThemeProvider theme={theme}>
+        <Header setIsRestaurantAddModalOpen={setIsRestaurantAddModalOpen} />
+        <main>
+          <CategoryFilter
+            selectedCategory={selectedCategory}
+            onChangeCategory={setSelectedCategory}
           />
-        )}
-        {isRestaurantAddModalOpen && (
-          <AddRestaurantModal
-            onUpdateRestaurants={updateRestaurants}
-            onCloseAddRestaurantModal={() => setIsRestaurantAddModalOpen(false)}
+          <RestaurantList
+            restaurants={filteredRestaurants}
+            onOpenModal={() => setIsRestaurantDetailModalOpen(true)}
+            onSelectRestaurant={setSelectedRestaurant}
           />
-        )}
-      </aside>
+        </main>
+        <aside>
+          {isRestaurantDetailModalOpen && selectedRestaurant !== null && (
+            <RestaurantDetailModal
+              onCloseRestaurantDetailModal={() =>
+                setIsRestaurantDetailModalOpen(false)
+              }
+              selectedRestaurant={selectedRestaurant}
+              onDeselectRestaurant={() => setSelectedRestaurant(null)}
+            />
+          )}
+          {isRestaurantAddModalOpen && (
+            <AddRestaurantModal
+              onUpdateRestaurants={updateRestaurants}
+              onCloseAddRestaurantModal={() =>
+                setIsRestaurantAddModalOpen(false)
+              }
+            />
+          )}
+        </aside>
+      </ThemeProvider>
     </>
   );
 };

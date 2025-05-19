@@ -12,7 +12,7 @@ const FormItem = styled.div`
 `;
 
 const Label = styled.label`
-  color: var(--grey-400);
+  color: ${({ theme }) => theme.colors.grey400};
   font-size: 14px;
 
   ${(props) =>
@@ -20,7 +20,7 @@ const Label = styled.label`
     `
     &::after {
       padding-left: 4px;
-      color: var(--primary-color);
+      color: ${props.theme.colors.primary};
       content: '*';
     }
   `}
@@ -30,17 +30,17 @@ const CategorySelect = styled.select`
   height: 44px;
   padding: 8px;
   margin: 6px 0;
-  border: 1px solid var(--grey-200);
+  border: 1px solid ${({ theme }) => theme.colors.grey200};
   border-radius: 8px;
   font-size: 16px;
-  color: var(--grey-300);
+  color: ${({ theme }) => theme.colors.grey300};
 `;
 
 const RestaurantNameInput = styled.input`
   height: 44px;
   padding: 8px;
   margin: 6px 0;
-  border: 1px solid var(--grey-200);
+  border: 1px solid ${({ theme }) => theme.colors.grey200};
   border-radius: 8px;
   font-size: 16px;
 `;
@@ -48,14 +48,14 @@ const RestaurantNameInput = styled.input`
 const DescriptionTextarea = styled.textarea`
   padding: 8px;
   margin: 6px 0;
-  border: 1px solid var(--grey-200);
+  border: 1px solid ${({ theme }) => theme.colors.grey200};
   border-radius: 8px;
   font-size: 16px;
   resize: none;
 `;
 
 const DescriptionHelpText = styled.span`
-  color: var(--grey-300);
+  color: ${({ theme }) => theme.colors.grey300};
   font-size: 14px;
 `;
 
@@ -71,8 +71,8 @@ const SubmitButton = styled.button`
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  background: var(--primary-color);
-  color: var(--grey-100);
+  background: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.grey100};
 `;
 
 const AddRestaurantModal = ({

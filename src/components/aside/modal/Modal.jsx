@@ -11,7 +11,7 @@ const ModalBackdrop = styled.div`
   bottom: 0;
   left: 0;
 
-  background: rgba(0, 0, 0, 0.35);
+  background: ${({ theme }) => theme.colors.modalBackdrop};
 `;
 
 const ModalContainer = styled.div`
@@ -22,7 +22,7 @@ const ModalContainer = styled.div`
   padding: 32px 16px;
 
   border-radius: 8px 8px 0px 0px;
-  background: var(--grey-100);
+  background: ${({ theme }) => theme.colors.grey100};
 `;
 
 const ModalTitle = styled.h2`

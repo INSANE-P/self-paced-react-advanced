@@ -23,12 +23,11 @@ const CloseButton = styled.button`
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  background: var(--primary-color);
-  color: var(--grey-100);
+  background: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.grey100};
 
   font-size: 14px;
   line-height: 20px;
-  font-weight: 400;
 `;
 
 const RestaurantDetailModal = ({
