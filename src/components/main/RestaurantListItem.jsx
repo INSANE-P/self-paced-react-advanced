@@ -1,11 +1,13 @@
 import categoryIcon from '../../assets/categoryIcons';
 import styled from 'styled-components';
 
+const BORDER_COLOR = '#e9eaed';
+
 const Restaurant = styled.li`
   display: flex;
   align-items: flex-start;
   padding: 16px 8px;
-  border-bottom: 1px solid #e9eaed;
+  border-bottom: 1px solid ${BORDER_COLOR};
   cursor: pointer;
 `;
 

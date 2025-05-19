@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { categories } from '../../constant/constant';
 
+const BORDER_COLOR = '#d0d5dd';
+
 const RestaurantFilterContainer = styled.section`
   display: flex;
   justify-content: space-between;
@@ -13,7 +15,7 @@ const RestaurantFilter = styled.select`
   min-width: 125px;
   padding: 8px;
 
-  border: 1px solid #d0d5dd;
+  border: 1px solid ${BORDER_COLOR};
   border-radius: 8px;
   background: transparent;
 
