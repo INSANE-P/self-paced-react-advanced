@@ -1,3 +1,6 @@
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyles = createGlobalStyle`
 * {
   padding: 0;
   margin: 0;
@@ -14,3 +17,6 @@ body {
   font-family: sans-serif;
   font-size: 16px;
 }
+`;
+
+export default GlobalStyles;
