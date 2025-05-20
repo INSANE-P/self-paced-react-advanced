@@ -1,7 +1,7 @@
 import addButton from '../../assets/add-button.png';
 import styled from 'styled-components';
 
-const TITLE_COLOR = '#fcfcfd';
+const NEAR_WHITE = '#fcfcfd';
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -13,7 +13,7 @@ const HeaderContainer = styled.header`
 `;
 
 const Title = styled.h1`
-  color: ${TITLE_COLOR};
+  color: ${NEAR_WHITE};
   font-size: 20px;
   line-height: 24px;
   font-weight: 600;

@@ -1,13 +1,13 @@
 import categoryIcon from '../../assets/categoryIcons';
 import styled from 'styled-components';
 
-const RESTAURANT_ITEM_BORDER_COLOR = '#d0d5dd';
+const LIGHT_GREY_BLUE = '#d0d5dd';
 
 const Restaurant = styled.li`
   display: flex;
   align-items: flex-start;
   padding: 16px 8px;
-  border-bottom: 1px solid ${RESTAURANT_ITEM_BORDER_COLOR};
+  border-bottom: 1px solid ${LIGHT_GREY_BLUE};
   cursor: pointer;
 `;
 
