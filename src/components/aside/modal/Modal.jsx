@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+const SEMI_TRANSPARENT_BLACK = 'rgba(0, 0, 0, 0.35)';
+
 const ModalWrapper = styled.div`
   display: block;
 `;
@@ -10,7 +12,7 @@ const ModalBackdrop = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.35);
+  background: ${SEMI_TRANSPARENT_BLACK};
 `;
 
 const ModalContainer = styled.div`
