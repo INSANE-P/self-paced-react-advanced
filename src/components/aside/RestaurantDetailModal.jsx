@@ -1,5 +1,14 @@
 import styled from 'styled-components';
 import Modal from './modal/Modal';
+import { useContext } from 'react';
+import {
+  SelectedRestaurantValueContext,
+  SelectedRestaurantActionContext,
+} from '../../contexts/RestaurantContext';
+import {
+  RestaurantDetailModalValueContext,
+  RestaurantDetailModalActionContext,
+} from '../../contexts/ModalContext';
 
 const RestaurantInfo = styled.div`
   margin-bottom: 24px;
@@ -30,20 +39,26 @@ const CloseButton = styled.button`
   line-height: 20px;
 `;
 
-const RestaurantDetailModal = ({
-  onCloseRestaurantDetailModal,
-  selectedRestaurant,
-  onDeselectRestaurant,
-}) => {
-  const handleRestaurantDetailModalClose = () => {
-    onCloseRestaurantDetailModal();
-    onDeselectRestaurant();
-  };
+const RestaurantDetailModal = () => {
+  const isRestaurantDetailModalOpen = useContext(
+    RestaurantDetailModalValueContext
+  );
+  const { closeRestaurantDetailModal } = useContext(
+    RestaurantDetailModalActionContext
+  );
+  const selectedRestaurant = useContext(SelectedRestaurantValueContext);
+  const setSelectedRestaurant = useContext(SelectedRestaurantActionContext);
 
+  const handleRestaurantDetailModalClose = () => {
+    closeRestaurantDetailModal();
+    setSelectedRestaurant(null);
+  };
+  if (!selectedRestaurant) return null;
   return (
     <Modal
       title={selectedRestaurant.name}
       onClose={handleRestaurantDetailModalClose}
+      isOpen={isRestaurantDetailModalOpen}
     >
       <RestaurantInfo>
         <RestaurantDescription>

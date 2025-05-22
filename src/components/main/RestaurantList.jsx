@@ -1,5 +1,11 @@
 import RestaurantListItem from './RestaurantListItem';
 import styled from 'styled-components';
+import { useContext } from 'react';
+import {
+  FilteredRestaurantsContext,
+  SelectedRestaurantActionContext,
+} from '../../contexts/RestaurantContext';
+import { RestaurantDetailModalActionContext } from '../../contexts/ModalContext';
 
 const RestaurantListContainer = styled.section`
   display: flex;
@@ -13,15 +19,21 @@ const RestaurantListItemContainer = styled.ul`
   list-style: none;
 `;
 
-const RestaurantList = ({ restaurants, onOpenModal, onSelectRestaurant }) => {
+const RestaurantList = () => {
+  const filteredRestaurants = useContext(FilteredRestaurantsContext);
+  const setSelectedRestaurant = useContext(SelectedRestaurantActionContext);
+  const { openRestaurantDetailModal } = useContext(
+    RestaurantDetailModalActionContext
+  );
+
   const onRestaurantClick = (restaurant) => {
-    onSelectRestaurant(restaurant);
-    onOpenModal(true);
+    setSelectedRestaurant(restaurant);
+    openRestaurantDetailModal();
   };
   return (
     <RestaurantListContainer>
       <RestaurantListItemContainer>
-        {restaurants.map((restaurant) => (
+        {filteredRestaurants.map((restaurant) => (
           <RestaurantListItem
             key={restaurant.id}
             restaurant={restaurant}

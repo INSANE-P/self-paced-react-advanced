@@ -1,0 +1,56 @@
+import { createContext, useMemo, useState } from 'react';
+
+export const RestaurantDetailModalValueContext = createContext();
+export const RestaurantDetailModalActionContext = createContext();
+export const RestaurantAddModalValueContext = createContext();
+export const RestaurantAddModalActionContext = createContext();
+
+export const ModalProvider = ({ children }) => {
+  const [isRestaurantDetailModalOpen, setIsRestaurantDetailModalOpen] =
+    useState(false);
+  const [isRestaurantAddModalOpen, setIsRestaurantAddModalOpen] =
+    useState(false);
+  const restaurantDetailModalActions = useMemo(
+    () => ({
+      openRestaurantDetailModal() {
+        setIsRestaurantDetailModalOpen(true);
+      },
+      closeRestaurantDetailModal() {
+        setIsRestaurantDetailModalOpen(false);
+      },
+    }),
+    []
+  );
+
+  const restaurantAddModalActions = useMemo(
+    () => ({
+      openRestaurantAddModal() {
+        setIsRestaurantAddModalOpen(true);
+      },
+      closeRestaurantAddModal() {
+        setIsRestaurantAddModalOpen(false);
+      },
+    }),
+    []
+  );
+
+  return (
+    <RestaurantDetailModalActionContext.Provider
+      value={restaurantDetailModalActions}
+    >
+      <RestaurantAddModalActionContext.Provider
+        value={restaurantAddModalActions}
+      >
+        <RestaurantDetailModalValueContext.Provider
+          value={isRestaurantDetailModalOpen}
+        >
+          <RestaurantAddModalValueContext.Provider
+            value={isRestaurantAddModalOpen}
+          >
+            {children}
+          </RestaurantAddModalValueContext.Provider>
+        </RestaurantDetailModalValueContext.Provider>
+      </RestaurantAddModalActionContext.Provider>
+    </RestaurantDetailModalActionContext.Provider>
+  );
+};
