@@ -53,16 +53,15 @@ const RestaurantDetailModal = () => {
     closeRestaurantDetailModal();
     setSelectedRestaurant(null);
   };
-  if (!selectedRestaurant) return null;
   return (
     <Modal
-      title={selectedRestaurant.name}
+      title={selectedRestaurant?.name}
       onClose={handleRestaurantDetailModalClose}
       isOpen={isRestaurantDetailModalOpen}
     >
       <RestaurantInfo>
         <RestaurantDescription>
-          {selectedRestaurant.description}
+          {selectedRestaurant?.description}
         </RestaurantDescription>
       </RestaurantInfo>
       <CloseButtonContainer>
