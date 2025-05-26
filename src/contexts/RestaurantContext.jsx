@@ -11,13 +11,6 @@ export const RestaurantProvider = ({ children }) => {
   const [restaurants, setRestaurants] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('전체');
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
-  useEffect(() => {
-    const updateRestaurants = async () => {
-      const data = await getRestaurants();
-      setRestaurants(data);
-    };
-    updateRestaurants();
-  }, []);
 
   return (
     <SelectedCategoryContext.Provider
