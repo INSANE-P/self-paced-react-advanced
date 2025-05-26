@@ -1,9 +1,9 @@
-import { createContext, useMemo, useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import { getRestaurants } from '../api/api';
 
 export const SelectedCategoryContext = createContext();
+export const RestaurantsContext = createContext();
 export const SetRestaurantsContext = createContext();
-export const FilteredRestaurantsContext = createContext();
 export const SelectedRestaurantValueContext = createContext();
 export const SelectedRestaurantActionContext = createContext();
 
@@ -19,20 +19,12 @@ export const RestaurantProvider = ({ children }) => {
     updateRestaurants();
   }, []);
 
-  const filteredRestaurants = useMemo(() => {
-    return selectedCategory === '전체'
-      ? restaurants
-      : restaurants.filter(
-          (restaurant) => restaurant.category === selectedCategory
-        );
-  }, [selectedCategory, restaurants]);
-
   return (
     <SelectedCategoryContext.Provider
       value={{ selectedCategory, setSelectedCategory }}
     >
       <SetRestaurantsContext.Provider value={setRestaurants}>
-        <FilteredRestaurantsContext.Provider value={filteredRestaurants}>
+        <RestaurantsContext.Provider value={restaurants}>
           <SelectedRestaurantActionContext.Provider
             value={setSelectedRestaurant}
           >
@@ -40,7 +32,7 @@ export const RestaurantProvider = ({ children }) => {
               {children}
             </SelectedRestaurantValueContext.Provider>
           </SelectedRestaurantActionContext.Provider>
-        </FilteredRestaurantsContext.Provider>
+        </RestaurantsContext.Provider>
       </SetRestaurantsContext.Provider>
     </SelectedCategoryContext.Provider>
   );

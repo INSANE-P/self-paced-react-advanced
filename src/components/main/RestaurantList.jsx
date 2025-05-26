@@ -1,8 +1,9 @@
 import RestaurantListItem from './RestaurantListItem';
 import styled from 'styled-components';
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import {
-  FilteredRestaurantsContext,
+  RestaurantsContext,
+  SelectedCategoryContext,
   SelectedRestaurantActionContext,
 } from '../../contexts/RestaurantContext';
 import { RestaurantDetailModalActionContext } from '../../contexts/ModalContext';
@@ -20,11 +21,20 @@ const RestaurantListItemContainer = styled.ul`
 `;
 
 const RestaurantList = () => {
-  const filteredRestaurants = useContext(FilteredRestaurantsContext);
+  const restaurants = useContext(RestaurantsContext);
+  const { selectedCategory } = useContext(SelectedCategoryContext);
   const setSelectedRestaurant = useContext(SelectedRestaurantActionContext);
   const { openRestaurantDetailModal } = useContext(
     RestaurantDetailModalActionContext
   );
+
+  const filteredRestaurants = useMemo(() => {
+    return selectedCategory === '전체'
+      ? restaurants
+      : restaurants.filter(
+          (restaurant) => restaurant.category === selectedCategory
+        );
+  }, [selectedCategory, restaurants]);
 
   const onRestaurantClick = (restaurant) => {
     setSelectedRestaurant(restaurant);
