@@ -1,5 +1,4 @@
-import { createContext, useState, useEffect } from 'react';
-import { getRestaurants } from '../api/api';
+import { createContext, useState } from 'react';
 
 export const SelectedCategoryContext = createContext();
 export const RestaurantsContext = createContext();
