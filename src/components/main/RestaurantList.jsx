@@ -5,7 +5,6 @@ import {
   SetRestaurantsContext,
   RestaurantsContext,
   SelectedCategoryContext,
-  SelectedRestaurantActionContext,
 } from '../../contexts/RestaurantContext';
 import { RestaurantDetailModalActionContext } from '../../contexts/ModalContext';
 import { getRestaurants } from '../../api/api';
@@ -26,7 +25,6 @@ const RestaurantList = () => {
   const restaurants = useContext(RestaurantsContext);
   const setRestaurants = useContext(SetRestaurantsContext);
   const { selectedCategory } = useContext(SelectedCategoryContext);
-  const setSelectedRestaurant = useContext(SelectedRestaurantActionContext);
   const { openRestaurantDetailModal } = useContext(
     RestaurantDetailModalActionContext
   );
@@ -48,8 +46,7 @@ const RestaurantList = () => {
   }, [selectedCategory, restaurants]);
 
   const onRestaurantClick = (restaurant) => {
-    setSelectedRestaurant(restaurant);
-    openRestaurantDetailModal();
+    openRestaurantDetailModal(restaurant);
   };
   return (
     <RestaurantListContainer>

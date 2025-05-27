@@ -9,7 +9,6 @@ export const SelectedRestaurantActionContext = createContext();
 export const RestaurantProvider = ({ children }) => {
   const [restaurants, setRestaurants] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('전체');
-  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
   return (
     <SelectedCategoryContext.Provider
@@ -17,13 +16,7 @@ export const RestaurantProvider = ({ children }) => {
     >
       <SetRestaurantsContext.Provider value={setRestaurants}>
         <RestaurantsContext.Provider value={restaurants}>
-          <SelectedRestaurantActionContext.Provider
-            value={setSelectedRestaurant}
-          >
-            <SelectedRestaurantValueContext.Provider value={selectedRestaurant}>
-              {children}
-            </SelectedRestaurantValueContext.Provider>
-          </SelectedRestaurantActionContext.Provider>
+          {children}
         </RestaurantsContext.Provider>
       </SetRestaurantsContext.Provider>
     </SelectedCategoryContext.Provider>

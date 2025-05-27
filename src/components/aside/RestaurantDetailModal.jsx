@@ -3,9 +3,6 @@ import Modal from './modal/Modal';
 import { useContext } from 'react';
 import {
   SelectedRestaurantValueContext,
-  SelectedRestaurantActionContext,
-} from '../../contexts/RestaurantContext';
-import {
   RestaurantDetailModalValueContext,
   RestaurantDetailModalActionContext,
 } from '../../contexts/ModalContext';
@@ -47,11 +44,9 @@ const RestaurantDetailModal = () => {
     RestaurantDetailModalActionContext
   );
   const selectedRestaurant = useContext(SelectedRestaurantValueContext);
-  const setSelectedRestaurant = useContext(SelectedRestaurantActionContext);
 
   const handleRestaurantDetailModalClose = () => {
     closeRestaurantDetailModal();
-    setSelectedRestaurant(null);
   };
   return (
     <Modal
