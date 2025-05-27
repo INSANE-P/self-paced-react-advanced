@@ -19,8 +19,8 @@ export const ModalProvider = ({ children }) => {
         setIsRestaurantDetailModalOpen(true);
       },
       closeRestaurantDetailModal() {
-        setSelectedRestaurant(null);
         setIsRestaurantDetailModalOpen(false);
+        setSelectedRestaurant(null);
       },
     }),
     []
