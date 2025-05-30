@@ -42,14 +42,10 @@ const RestaurantDetailModal = () => {
   );
   const selectedRestaurant = useRecoilValue(selectedRestaurantState);
   const { closeRestaurantDetailModal } = useRestaurantDetailModalAction();
-
-  const handleRestaurantDetailModalClose = () => {
-    closeRestaurantDetailModal();
-  };
   return (
     <Modal
       title={selectedRestaurant?.name}
-      onClose={handleRestaurantDetailModalClose}
+      onClose={closeRestaurantDetailModal}
       isOpen={isRestaurantDetailModalOpen}
     >
       <RestaurantInfo>
@@ -58,7 +54,7 @@ const RestaurantDetailModal = () => {
         </RestaurantDescription>
       </RestaurantInfo>
       <CloseButtonContainer>
-        <CloseButton type="button" onClick={handleRestaurantDetailModalClose}>
+        <CloseButton type="button" onClick={closeRestaurantDetailModal}>
           닫기
         </CloseButton>
       </CloseButtonContainer>
