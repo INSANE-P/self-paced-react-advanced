@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import Modal from './modal/Modal';
-import { useContext } from 'react';
+import { useRecoilValue } from 'recoil';
 import {
-  SelectedRestaurantValueContext,
-  RestaurantDetailModalValueContext,
-  RestaurantDetailModalActionContext,
-} from '../../contexts/ModalContext';
+  isRestaurantDetailModalOpenState,
+  selectedRestaurantState,
+} from '../../recoil/atoms';
+import { useRestaurantDetailModalAction } from '../../hooks/modalAction';
 
 const RestaurantInfo = styled.div`
   margin-bottom: 24px;
@@ -37,13 +37,11 @@ const CloseButton = styled.button`
 `;
 
 const RestaurantDetailModal = () => {
-  const isRestaurantDetailModalOpen = useContext(
-    RestaurantDetailModalValueContext
+  const isRestaurantDetailModalOpen = useRecoilValue(
+    isRestaurantDetailModalOpenState
   );
-  const { closeRestaurantDetailModal } = useContext(
-    RestaurantDetailModalActionContext
-  );
-  const selectedRestaurant = useContext(SelectedRestaurantValueContext);
+  const selectedRestaurant = useRecoilValue(selectedRestaurantState);
+  const { closeRestaurantDetailModal } = useRestaurantDetailModalAction();
 
   const handleRestaurantDetailModalClose = () => {
     closeRestaurantDetailModal();
