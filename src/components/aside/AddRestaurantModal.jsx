@@ -6,7 +6,7 @@ import { useSetRecoilState, useRecoilValue } from 'recoil';
 import {
   restaurantsState,
   isRestaurantAddModalOpenState,
-} from '../../recoil/atoms';
+} from '../../store/atoms';
 import { useRestaurantAddModalAction } from '../../hooks/modalAction';
 
 const AddRestaurantForm = styled.form``;

@@ -1,7 +1,7 @@
 import RestaurantListItem from './RestaurantListItem';
 import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
-import { filteredRestaurantsSelector } from '../../recoil/selectors';
+import { filteredRestaurantsSelector } from '../../store/selectors';
 import { useRestaurantDetailModalAction } from '../../hooks/modalAction';
 
 const RestaurantListContainer = styled.section`

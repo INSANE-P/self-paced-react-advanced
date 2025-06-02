@@ -4,7 +4,7 @@ import { useRecoilValue } from 'recoil';
 import {
   isRestaurantDetailModalOpenState,
   selectedRestaurantState,
-} from '../../recoil/atoms';
+} from '../../store/atoms';
 import { useRestaurantDetailModalAction } from '../../hooks/modalAction';
 
 const RestaurantInfo = styled.div`

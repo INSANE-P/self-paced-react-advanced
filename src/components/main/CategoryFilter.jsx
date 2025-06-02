@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { categories } from '../../constant/constant';
 import { useRecoilState } from 'recoil';
-import { selectedCategoryState } from '../../recoil/atoms';
+import { selectedCategoryState } from '../../store/atoms';
 
 const RestaurantFilterContainer = styled.section`
   display: flex;

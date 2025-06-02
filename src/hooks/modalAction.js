@@ -3,7 +3,7 @@ import {
   isRestaurantDetailModalOpenState,
   selectedRestaurantState,
   isRestaurantAddModalOpenState,
-} from '../recoil/atoms';
+} from '../store/atoms';
 
 export const useRestaurantDetailModalAction = () => {
   const setModalOpen = useSetRecoilState(isRestaurantDetailModalOpenState);
